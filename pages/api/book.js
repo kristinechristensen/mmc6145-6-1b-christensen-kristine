@@ -15,7 +15,7 @@ export default withIronSessionApiRoute(
     if (!req.session.user) {
         return res.status(401).json({error: "User Not Found"})
     }
-    else {
+    
 
     switch (req.method) {
 
@@ -59,7 +59,7 @@ export default withIronSessionApiRoute(
         return res.status(404).end()
 
     }
-  }//close else
+ 
 
 
 

@@ -9,6 +9,7 @@ import Header from '../../components/header'
 import db from '../../db'
 import styles from '../../styles/Book.module.css'
 
+
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req, params }) {
     const { user } = req.session;
@@ -45,19 +46,14 @@ export default function Book(props) {
       router.push('/')
   }, [props.book, bookSearchResults, book, router])
 
-  async function addToFavorites() {
+  async function addToFavorites(e) {
     // TODO: use fetch to call POST /api/book
     // Be sure to pass book in body (use JSON.stringify)
-    // Call router.replace(router.asPath) if you receive a 200 status
-
-    
-
-    const res = await fetch('/api/book/', {
+    // Call router.replace(router.asPath) if you receive a 200 status 
+    e.preventDefault()
+    const res = await fetch('/api/book', {
       method:'POST', 
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(book)
+      body:JSON.stringify(book)
     })
     if (res.status === 200) {
       //check console log
@@ -70,20 +66,14 @@ export default function Book(props) {
     // TODO: use fetch to call DELETE /api/book
     // Be sure to pass {id: <book id>} in body (use JSON.stringify)
     // Call router.replace(router.asPath) if you receive a 200 status
-
-    const res = await fetch('/api/book/', {
-      method: 'DELETE', 
-      headers: {
-        "content-type":"application/json",
-      },
-      body: JSON.stringify({id:book.id}),
+    const res = await fetch('/api/book', {
+      method: 'DELETE',
+      body: JSON.stringify({id:book.id})
     })
      // Call router.replace(router.asPath) if you receive a 200 status
     if (res.status === 200) {
           router.replace(router.asPath)
     }
-
-
   }
 
   return (
