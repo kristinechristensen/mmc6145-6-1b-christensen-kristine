@@ -46,11 +46,11 @@ export default function Book(props) {
       router.push('/')
   }, [props.book, bookSearchResults, book, router])
 
-  async function addToFavorites(e) {
+  async function addToFavorites() {
     // TODO: use fetch to call POST /api/book
     // Be sure to pass book in body (use JSON.stringify)
     // Call router.replace(router.asPath) if you receive a 200 status 
-    e.preventDefault()
+    
     const res = await fetch('/api/book', {
       method:'POST', 
       body: JSON.stringify(book)
