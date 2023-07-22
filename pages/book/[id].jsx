@@ -50,7 +50,9 @@ export default function Book(props) {
     // Be sure to pass book in body (use JSON.stringify)
     // Call router.replace(router.asPath) if you receive a 200 status
 
-    const res = await fetch('/api/book', {
+    
+
+    const res = await fetch('/api/book/', {
       method:'POST', 
       headers: {
         "content-type": "application/json",
@@ -62,17 +64,14 @@ export default function Book(props) {
       console.log(await res.json())
       router.replace(router.asPath)
     }
-
-
-
-
   }
+
   async function removeFromFavorites() {
     // TODO: use fetch to call DELETE /api/book
     // Be sure to pass {id: <book id>} in body (use JSON.stringify)
     // Call router.replace(router.asPath) if you receive a 200 status
 
-    const res = await fetch('/api/book', {
+    const res = await fetch('/api/book/', {
       method: 'DELETE', 
       headers: {
         "content-type":"application/json",
@@ -81,8 +80,7 @@ export default function Book(props) {
     })
      // Call router.replace(router.asPath) if you receive a 200 status
     if (res.status === 200) {
-    
-      router.replace(router.asPath)
+          router.replace(router.asPath)
     }
 
 
