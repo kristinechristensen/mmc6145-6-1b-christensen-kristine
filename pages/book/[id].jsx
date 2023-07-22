@@ -53,11 +53,11 @@ export default function Book(props) {
     e.preventDefault()
     const res = await fetch('/api/book', {
       method:'POST', 
-      body:JSON.stringify(book)
+      body: JSON.stringify(book)
     })
     if (res.status === 200) {
       //check console log
-      console.log(await res.json())
+     //console.log(await res.json())
       router.replace(router.asPath)
     }
   }

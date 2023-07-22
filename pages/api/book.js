@@ -16,7 +16,6 @@ export default withIronSessionApiRoute(
         return res.status(401).json({error: "User Not Found"})
     }
     
-
     switch (req.method) {
 
       case 'POST':
@@ -28,8 +27,7 @@ export default withIronSessionApiRoute(
             req.session.destroy();
             return res.status(401).json({error: "User not found"})
           }
-
-          return res.status(200).json(addedBook)
+          return res.status(200).json(addBook)
 
 
         }
@@ -48,7 +46,7 @@ export default withIronSessionApiRoute(
               return res.status(401).json({error:"User Not Found"})
             }
 
-            return res.status(200).json(removedBook)
+            return res.status(200).json(removeBook)
         }
         catch(error) {
           return res.status(400).json({ error: error.message })
